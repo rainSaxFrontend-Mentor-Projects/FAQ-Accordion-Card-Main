@@ -20,10 +20,11 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 img {
-    display: block;
+    /* display: block; */
     max-width: 100%;
 }
 
@@ -91,17 +92,35 @@ main {
 }
 
 .images {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     position: absolute;
-    top: 0;
+    margin-top: 1rem;
+    top: 20%;
     transform: translateY(-7rem);
+    z-index: 1;
 }
 
+.image-top {
+    grid-column: 1 / span 4;
+    grid-row: 1 / span 2;
+}
 
-/* position set to relative so z-index will have an effect */
-#shadow {
-    position: relative;
-    transform: translateY(-5rem);
+.image-bottom {
+    grid-column: 1 / span 4;
+    grid-row: 2 / span 2;
     z-index: -1;
+}
+
+.images-desktop {
+    display: none;
+}
+
+#shadow {
+    /* position: relative; */
+    /* transform: translateY(-5rem); */
+    padding-top: 10%;
 }
 
 h1 {
@@ -122,6 +141,10 @@ button {
     justify-content: space-between;
     align-items: center;
     padding: 1.25rem 0rem;
+}
+
+button:hover {
+    color: #F47B56;
 }
 
 .down-arrow {
@@ -149,31 +172,51 @@ button {
         flex-direction: row;
         padding: 4rem;
         justify-content: space-between;
-        gap: 3rem;
         max-width: 57.5rem;
-        overflow-x: hidden;
+        overflow: hidden;
+        z-index: 1;
     }
 
     .images {
-        position: relative;
-        flex-basis: 50%;
-        transform: none;
+        display: none;
     }
 
-    #woman-online {
-        content: url("./images/illustration-woman-online-desktop.svg");
-        transform: none;
+    .images-desktop {
+        flex-basis: 50%;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+        height: 100%;
+        position: relative;
+    }
+
+    .image-top-desk {
+        grid-row: 2 / span 9;
+        grid-column: 1 / -1;
+    }
+
+    .image-bottom-desk {
+        position: absolute;
+        right: 34%;
+        bottom: 45%;
+        width: 60rem;
+        height: 35.5rem;
+        z-index: -1;
+    }
+
+    .image-cube-desk {
+        grid-row: 5 / span 3;
+        grid-column: 1 / span 3;
+        z-index: 1;
+        position: fixed;
+    }
+
+    #woman-online-desk {
         transform: translateX(-8rem);
     }
 
-    #shadow {
-        content: url("./images/bg-pattern-desktop.svg");
-        position: absolute;
-        right: 8rem;
-        height: 35rem;
-        width: 60.25rem;
-        transform: translateY(-20rem);
-        z-index: 1;
+    #cube-desk {
+        transform: translateX(-9.8rem);
     }
 
     .drop-downs {
